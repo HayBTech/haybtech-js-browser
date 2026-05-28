@@ -7,6 +7,30 @@ The official HayBTech browser library for building modern, secure checkout exper
 
 ---
 
+## Intégration par IA (Prompt pour Marchands)
+
+Si vous utilisez un assistant IA (comme Cursor, GitHub Copilot, ChatGPT, Claude, etc.), vous pouvez copier-coller le prompt suivant pour intégrer ce SDK de A à Z dans votre projet :
+
+```text
+Agis en tant qu'expert en intégration frontend JavaScript. Je souhaite intégrer la passerelle de paiement HayBTech sur mon site web statique ou Single Page Application (SPA) avec la bibliothèque browser `haybtech.js` (ou `@haybtech/browser`).
+
+Voici ma stack technique actuelle :
+- Framework Frontend : [ex: Vanilla JS, React, Vue, Angular]
+- Backend : [ex: API REST Node.js, PHP, Laravel, ou serverless]
+
+*Note de sécurité : L'initiation de paiement doit s'effectuer via votre serveur backend. Le code frontend sert à appeler votre backend et à rediriger ou afficher le guichet de paiement.*
+
+Tâches à accomplir dans le code généré :
+1. **Déclenchement du paiement** : Créer une fonction JS qui intercepte le clic sur le bouton "Payer", envoie les détails du panier à votre backend via une requête `fetch` et reçoit l'URL de paiement `payment_url`.
+2. **Redirection ou Modal intégrée** : Rediriger l'utilisateur vers cette URL de manière transparente avec `haybtech.redirectToCheckout({ paymentUrl })` ou en ouvrant un popup avec `haybtech.openPopup(...)`.
+3. **Écran d'attente et de retour** : Gérer les pages de destination `success_url` et `failed_url`. Sur la page de succès, afficher un écran d'attente pendant que le backend valide la commande par webhook, puis confirmer visuellement l'achat.
+4. **Gestion des pannes** : Afficher des messages d'erreur clairs en cas d'échec réseau ou de refus de paiement sans exposer de détails techniques inutiles.
+
+Génère le code frontend complet, moderne, commenté et optimisé.
+```
+
+---
+
 ## SECURITY WARNING
 
 **NEVER use your Secret Key (`sk_...`) in client-side code.**
@@ -172,6 +196,5 @@ Opens the payment page in a popup window.
 | Mobile Chrome   | 60+     |
 | Mobile Safari   | 12+     |
 
----
-
 MIT License
+
